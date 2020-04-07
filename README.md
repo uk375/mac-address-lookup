@@ -6,7 +6,7 @@ The CLI uses https://macaddress.io/ API internally, so an API Key is necessary t
 
 Get an API Key by signing up at https://macaddress.io/signup.
 
-GoLang should be installed on the machine or use the the "simplified build" as shown below
+GoLang should be installed on the machine or use the "simplified build" as shown below
 
 #### Build
 ```
@@ -19,7 +19,9 @@ make docker-image
 
 #### Simplified build
 If you don't have golang installed on your machine, use
-`make docker-simple API_KEY=<api_key>`
+```
+make docker-simple API_KEY=<api_key>
+```
 
 #### Usage
 ```shell script
