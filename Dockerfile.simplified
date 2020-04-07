@@ -1,0 +1,12 @@
+## Build the app
+FROM golang:alpine AS go-build
+ARG API_KEY=apiKey
+RUN apk --no-cache add build-base git bzr mercurial gcc
+ADD . /src
+RUN cd /src && GOOS=linux GOARCH=amd64 go build -ldflags "-X main.apiKey=${API_KEY}" -i -v -tags 'release netgo' -o mal main.go
+
+# create container
+FROM alpine
+WORKDIR /app
+COPY --from=go-build /src/mal /usr/local/bin
+ENTRYPOINT ["mal"]
